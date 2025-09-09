@@ -1,13 +1,13 @@
 import { Share } from "../assets/icons/share"
 import { Delete } from "../assets/icons/delete"
 const defaultclass = "p-2 my-3 mx-3 bg-white rounded-md shadow-md max-w-72 border-gray-200 border "
-import type { FC } from "react";
 import { Twitter } from "../assets/icons/twitter";
 import { Youtube } from "../assets/icons/youtube";
-interface CardsType{
-    "title" : string,
-    "link" : string,
-    "type" : "youtube" | "tweet"
+export interface CardsType{
+    "_id" : string;
+    "title" : string;
+    "link" : string;
+    "type" : "youtube" | "tweet";
 
 }
 const getYouTubeEmbedUrl = (url:string) => {
@@ -42,8 +42,10 @@ export function Card({ title, link, type }: CardsType){
                 </div>
                 <div className="flex justify-center gap-3 text-gray-500 hover:cursor-pointer">
                     <div>
-                        <a href={link} target="_blank"></a>
-                        <Share size="md"/>
+                        <a href={link} target="_blank">
+                            <Share size="md"/>
+                        </a>
+                        
                     </div>
                         <Delete size="md"/>  
                 </div>

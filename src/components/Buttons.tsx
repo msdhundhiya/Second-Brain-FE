@@ -6,6 +6,9 @@ interface buttonprops{
     size : "sm" | "md" | "lg";
     icononleft ?: ReactElement;
     icononright ?: ReactElement;
+    onClick ?: ()=>void;
+    fullWidth ?: boolean;
+    loading ?:boolean;
 }
 const variantClasses = {
     "primary": "bg-blue-700 text-white",
@@ -18,9 +21,9 @@ const sizeclass={
     "lg" : "py-4 px-8 rounded-lg text-3xl "
 }
  const defaultclass = "flex items-center gap-4 hover:cursor-pointer font-light"
-export function Button({variant,text,size,icononright,icononleft}:buttonprops){
+export function Button({variant,text,size,icononright,icononleft,onClick,fullWidth,loading}:buttonprops){
     return (<div className="flex">
-        <button className={`${variantClasses[variant]} ${defaultclass} ${sizeclass[size]}`}>
+        <button onClick={onClick} className={`${variantClasses[variant]} ${defaultclass} ${sizeclass[size]}${fullWidth ? " w-full flex justify-center items-center" : ""} ${loading ? "opacity-45	" : ""}`}>
            {icononleft} {text} {icononright}
         </button>
     </div>
